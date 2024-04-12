@@ -5,6 +5,7 @@ import { NavComponent } from './layout/nav/nav.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { DetalleCursoComponent } from './components/pages/detalle-curso/detalle-curso.component';
 import { EquipoComponent } from './components/pages/equipo/equipo.component';
+import { ReunionComponent } from './components/pages/reunion/reunion.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
       component:NavigationComponent,
       children:[
         {
-          path:'', component:EquipoComponent
+          path:'', component:CursosComponent
         },
         {
           path:'cursos', component:CursosComponent
@@ -26,6 +27,10 @@ const routes: Routes = [
         {
           path:'usuario/equipo', component:EquipoComponent
         },
+        {
+          path:'usuario/reunion', component:ReunionComponent
+        },
+
       ]
     }
   

@@ -41,11 +41,9 @@ export class ModalCuestionarioComponent {
       next: (response) => {
         console.log('Respuestas enviadas exitosamente', response);
         this.respuesta =response;
-        // Aquí puedes manejar la respuesta del servidor si es necesario
       },
       error: (error) => {
         console.error('Error al enviar las respuestas', error);
-        // Aquí puedes manejar el error del servidor si es necesario
       }
     });
 

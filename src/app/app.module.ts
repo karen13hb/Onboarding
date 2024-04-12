@@ -15,6 +15,7 @@ import { ModalCuestionarioComponent } from './components/Modals/modal-cuestionar
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ReunionComponent } from './components/pages/reunion/reunion.component';
+import { ModalEncuestaComponent } from './components/Modals/modal-encuesta/modal-encuesta.component';
 
 
 
@@ -29,7 +30,8 @@ import { ReunionComponent } from './components/pages/reunion/reunion.component';
     NavigationComponent,
     EquipoComponent,
     ModalCuestionarioComponent,
-    ReunionComponent
+    ReunionComponent,
+    ModalEncuestaComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,7 @@ label {
   }
   .modal-header,.modal-footer{
     background-color: var(--color-primary) ;
+    color: white;
   }
 
   

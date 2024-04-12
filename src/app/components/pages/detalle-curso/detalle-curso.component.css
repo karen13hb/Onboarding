@@ -74,7 +74,7 @@
   }
   
 .video-content{
-    background-color:  rgba(54, 148, 118, 0.582); 
+    background-color:  rgb(78 159 181 / 70%); 
     border-radius: 20px;
     padding: 1% 5%;
     margin: 4% 0%;
@@ -82,7 +82,7 @@
 }
 .video-content:hover{
 
-    border: 1px solid  rgba(54, 148, 118);
+    border: 1px solid  rgb(21, 119, 146);
 }
 .video-container {
   flex-grow: 1;

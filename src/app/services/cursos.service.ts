@@ -3,55 +3,52 @@ import { HttpClient ,HttpParams } from '@angular/common/http';
 import { retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
 
-  private ApiURL1;
-  private ApiURL2;
-  private ApiEquipo = "https://6be3274e-4706-4fc1-be55-dfacda2f4cc0.mock.pstmn.io"
-  private ApiVerificar ='https://66091da3-df15-4d08-b37c-cb6e296cd304.mock.pstmn.io'
+  private ApiURL;
 
   constructor(private http: HttpClient,private sanitizer: DomSanitizer) {
-    this.ApiURL1 = "https://b08d2354-a57f-4621-a7c6-afe10a13af77.mock.pstmn.io";
-    this.ApiURL2 = "https://028f0adf-d997-460d-8215-87ecb089b44d.mock.pstmn.io"
+    this.ApiURL = environment.apiUrl;
    }
 
    obtenerCursos(personaId:number){
-    return this.http.get<any>(`${this.ApiURL1}/cursos/existen/${personaId}`).pipe(
+    return this.http.get<any>(`${this.ApiURL}/cursos/existen/${personaId}`).pipe(
 			retry(2)
 		);
    }
 
    obtenerVideosPreguntas(cursoId:number){
-    return this.http.get<any>(`${this.ApiURL2}/cursos/${cursoId}`).pipe(
+    return this.http.get<any>(`${this.ApiURL}/cursos/${cursoId}`).pipe(
 			retry(2)
 		);
    }
 
    obtenerEquipo(idUsuario:number){
-    return this.http.get<any>(`${this.ApiEquipo}/usuario/organigrama/${idUsuario}`).pipe(
+    return this.http.get<any>(`${this.ApiURL}/usuario/organigrama/${idUsuario}`).pipe(
 			retry(2)
 		);
    }
 
    validarCuestionario(data: any){
   
-    return this.http.get<any>(`${this.ApiVerificar}/cursos`,data).pipe(
+    return this.http.get<any>(`${this.ApiURL}/cursos`,data).pipe(
 			retry(2)
 		);
   }
 
   obtenerVideoUrl(idVideo: number): SafeUrl {
-    const videoUrl = `http://localhost:3000/videos/video/${idVideo}`;
+    const videoUrl = `${this.ApiURL}/videos/video/${idVideo}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
 
   registrarInteraccionVideo(data: any): Observable<any> {
-    return this.http.post("http://localhost:3000/cursos", data).pipe(
+    return this.http.post(`${this.ApiURL}/cursos`, data).pipe(
 			retry(2)
 		);
   }
