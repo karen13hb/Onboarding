@@ -11,8 +11,8 @@
   }
   
   :root {
-    --color-primary: #387D7A; 
-    --color-secondary: #369477;
+    --color-primary: #004254; 
+    --color-secondary: #266374;
     --color-transparent: rgba(56, 125, 122, 0.247);
   }
   .btn{

@@ -14,6 +14,7 @@ import { EquipoComponent } from './components/pages/equipo/equipo.component';
 import { ModalCuestionarioComponent } from './components/Modals/modal-cuestionario/modal-cuestionario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ReunionComponent } from './components/pages/reunion/reunion.component';
 
 
 
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NavigationComponent,
     EquipoComponent,
-    ModalCuestionarioComponent
+    ModalCuestionarioComponent,
+    ReunionComponent
   ],
   imports: [
     BrowserModule,

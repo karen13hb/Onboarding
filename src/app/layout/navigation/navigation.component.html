@@ -1,10 +1,24 @@
 
 
 <app-nav></app-nav>
+
 <div class="navigation-content">
+  <nav>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="''"  [class.active]="selectedTab === 'perfil'" (click)="selectTab('perfil')">Mi perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="selectedTab === 'preguntas'" (click)="selectTab('preguntas')">Zona de preguntas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="'cursos'"  [class.active]="selectedTab === 'cursos'" (click)="selectTab('cursos')">Cursos</a>
+        </li>
+    </ul>
+</nav>
     <router-outlet></router-outlet>
 </div>
-<button class="btn-flotante" (click)="togglePreguntar()">
+<!-- <button class="btn-flotante" (click)="togglePreguntar()">
     <i class="material-icons">question_mark</i>
 </button>
 
@@ -22,4 +36,4 @@
           <button class="btn btn-success" type="submit">Preguntar</button>
         </div>
       </div>
-</div>
+</div> -->

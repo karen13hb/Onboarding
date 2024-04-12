@@ -1,5 +1,6 @@
 .navigation-content{
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 40px - 96px - 42px); /*tamaño - primer nav - segundo nav indra - nav perfil*/
+    background-color: rgb(243 243 243 / 63%);
 
   }
   .btn-flotante,.btn-flotante2 {
@@ -75,3 +76,18 @@
   height: 35%;
 }
  
+/* ul {
+  border-bottom: none;
+} */
+.nav-tabs{
+  background-color: white;
+}
+.nav-tabs .nav-item .nav-link.active {
+  background-color: rgb(243 243 243 / 63%);
+
+  border-color: #bdc0c2 #bdc0c2 transparent;
+}
+.nav-tabs .nav-item .nav-link {
+  text-decoration: none; 
+  color: inherit;
+}

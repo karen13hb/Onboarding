@@ -9,7 +9,9 @@
             <input type="radio" name="{{ pregunta.idPregunta }}" [value]="respuesta.idRespuesta" [(ngModel)]="respuestasSeleccionadas[pregunta.idPregunta]">
             <span>{{ respuesta.nombreRespuesta }}</span>
         </label>
+        <p class="validation" *ngIf="!esRespuestaCorrecta(pregunta.idPregunta)">Es incorrecta</p>
       </div>
+      
       <div class="btn">
         <button type="button" class="btn-next" (click)="validarFormulario()">Enviar</button>
     </div>

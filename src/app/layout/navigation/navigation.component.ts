@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
 
+  selectedTab: string = 'cursos';
   mostrarNotas: boolean = false;
   preguntar:boolean =false;
 
@@ -26,5 +27,10 @@ export class NavigationComponent {
     }
     this.preguntar = !this.preguntar;
     
+  }
+
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
   }
 }

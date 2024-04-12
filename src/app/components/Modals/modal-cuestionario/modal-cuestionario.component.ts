@@ -15,6 +15,7 @@ export class ModalCuestionarioComponent {
   public preguntas: Pregunta[] =[];
   public idUsuario=0;
   public idCurso=0;
+  public respuesta:any =[];
 
   respuestasSeleccionadas: { [idPregunta: number]: number } = {};
 
@@ -39,6 +40,7 @@ export class ModalCuestionarioComponent {
     this.cursosService.validarCuestionario(datosEnviar).subscribe({
       next: (response) => {
         console.log('Respuestas enviadas exitosamente', response);
+        this.respuesta =response;
         // Aquí puedes manejar la respuesta del servidor si es necesario
       },
       error: (error) => {
@@ -48,6 +50,14 @@ export class ModalCuestionarioComponent {
     });
 
   }
+
+  esRespuestaCorrecta(idPregunta: number): boolean {
+    const respuestasRecibidas = this.respuesta[idPregunta];
+    if (respuestasRecibidas && respuestasRecibidas[0] && !respuestasRecibidas[0].esCorrecta) {
+      return false; 
+    }
+    return true; 
+  }//falta deshabilitar los botones de input y de enviar
     
   
 
