@@ -1,0 +1,28 @@
+@import "src/styles.css";
+
+
+.content-nav{
+    z-index: 1;
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-primary);    
+    display: flex;
+    align-items: center;
+}
+nav ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: 5%;
+    gap:3%
+}
+a{
+    font-size: larger;
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: #b9b2b2;
+}

@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Signika Negative', sans-serif;
+  }
+  p{
+    margin-bottom: 0;
+  }
+  
+  :root {
+    --color-primary: #387D7A; 
+    --color-secondary: #369477;
+    --color-transparent: rgba(56, 125, 122, 0.247);
+  }
+  .btn{
+    width: 100%;
+  }
+  .btn-next{
+  
+    color: white;
+    background-color: var(--color-primary);
+    padding: 0.3% 5%;
+    border-style: none;
+    border-radius: 50px;
+    margin: auto;
+  }
+  .btn-next:hover{
+    
+    background-color: #55b1ac;
+  }
+  

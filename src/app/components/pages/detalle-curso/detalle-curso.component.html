@@ -1,0 +1,21 @@
+<div class="detalle-content">
+
+    <div class="info-content">
+        <h4>{{titulo}}</h4>
+        <section class="description">
+            {{descripcion}}
+        </section>
+        
+        <div class="btn">
+            <button class="btn-next" (click)="openDialog()">Cuestionario</button>
+        </div>
+
+    </div>
+    <div class="videos-content">
+        <div class="video-content" *ngFor="let video of videos" >
+            <p>{{ video.nombre }}</p>
+        </div>
+    </div>
+    
+
+</div>

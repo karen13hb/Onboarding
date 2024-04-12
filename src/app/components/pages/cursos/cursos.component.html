@@ -1,0 +1,26 @@
+<div class="cursos-content">
+
+    <div class="card-content" *ngFor="let curso of cursos">
+        <div class="text-background">
+            <h6>{{ curso.nombre }}</h6>
+        </div>
+        <div class="container-detail">
+            <p class="description">{{ curso.descripcion }}</p> 
+            <p class="hours d-flex">{{ curso.tiempo }} horas 
+                <span class="material-symbols-outlined"> 
+                    <i class="material-icons"  [ngClass]="{'checked': curso.visto}">
+                        check_circle
+                    </i>
+                </span>
+            </p>
+            <a (click)="redirecToCurso(curso.id,curso.descripcion,curso.nombre)" >Ver curso </a> 
+        </div>
+    </div>
+   
+</div>
+
+<div class="btn">
+    <button class="btn-next" (click)="siguientePaso()" [disabled]="siguiente">He finalizado todos mis cursos</button>
+</div>
+
+

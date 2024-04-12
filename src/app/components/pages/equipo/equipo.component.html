@@ -1,0 +1,20 @@
+<div class="eight">
+  <h1>Conoce a tu equipo</h1>
+</div>
+
+<div class="team-content">
+    <div class="card" *ngFor="let miembro of equipo">
+        <img src="../../assets/img_avatar.png" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>{{miembro.nombre}}</b></h4>
+          <p>{{miembro.correo}}</p>         
+          <br>
+          <p>{{miembro.rol}}</p>
+        </div>
+      </div>
+</div>
+
+<div class="btn">
+  <button class="btn-next">Continuar</button>
+</div>
+

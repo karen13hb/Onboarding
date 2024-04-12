@@ -1,0 +1,25 @@
+
+
+<app-nav></app-nav>
+<div class="navigation-content">
+    <router-outlet></router-outlet>
+</div>
+<button class="btn-flotante" (click)="togglePreguntar()">
+    <i class="material-icons">question_mark</i>
+</button>
+
+<button class="btn-flotante2" (click)="toggleMostrarNotas()">
+    <i class="material-icons">note_alt</i>
+</button>
+<div class="notas-container" *ngIf="mostrarNotas">
+    <textarea class="note"></textarea>
+</div>
+
+<div class="question-container" *ngIf="preguntar">
+    <div class="input-group flex-nowrap mb-3">
+        <input type="text" class="form-control input-q" placeholder="Hazme una pregunta">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">Preguntar</button>
+        </div>
+      </div>
+</div>

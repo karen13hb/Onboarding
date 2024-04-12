@@ -1,0 +1,21 @@
+<div class="modal-header d-flex align-items-center justify-content-center">
+    <h4 class="modal-title">Cuestionario</h4>
+   
+  </div>
+  <div class="modal-body">
+        <div *ngFor="let pregunta of preguntas">
+        <h3>{{ pregunta.pregunta }}</h3>
+        <label *ngFor="let respuesta of pregunta.respuestas">
+            <input type="radio" name="{{ pregunta.idPregunta }}" [value]="respuesta.idRespuesta" [(ngModel)]="respuestasSeleccionadas[pregunta.idPregunta]">
+            <span>{{ respuesta.nombreRespuesta }}</span>
+        </label>
+      </div>
+      <div class="btn">
+        <button type="button" class="btn-next" (click)="validarFormulario()">Enviar</button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="btn">
+        <button type="button" class="btn-next" (click)="activeModal.close('Close click')">Cerrar</button>
+    </div>   
+  </div>

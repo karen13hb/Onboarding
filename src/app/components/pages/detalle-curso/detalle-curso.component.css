@@ -1,0 +1,64 @@
+.detalle-content{
+    width: 100%;
+    height: 91vh;
+    padding: 5%;
+    display: flex;
+    flex-direction: row;
+    gap:5%
+}
+.info-content{
+    width: 50%;
+    height: 100%;
+}
+.info-content h4{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info-content section{
+    height: 40%;
+    padding: 0% 10%;
+    text-align: center;
+
+}
+.info-content .btn{
+    height: 20%;
+}
+.videos-content{
+    width: 50%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 0% 5%;
+    
+}
+  
+  .videos-content::-webkit-scrollbar {
+    
+    width: 10px; /* Ancho del scrollbar */
+  }
+  
+  .videos-content::-webkit-scrollbar-track {
+    background: transparent; /* Color de fondo del scrollbar */
+  }
+  
+  .videos-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color del thumb (barra de desplazamiento) */
+    border-radius: 5px; /* Radio de borde del thumb */
+  }
+  
+  .videos-content::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cambia el color del thumb cuando se pasa el mouse sobre él */
+  }
+  
+.video-content{
+    background-color:  rgba(54, 148, 118, 0.582); 
+    border-radius: 20px;
+    padding: 1% 5%;
+    margin: 4% 0%;
+    cursor: pointer;
+}
+.video-content:hover{
+
+    border: 1px solid  rgba(54, 148, 118);
+}
