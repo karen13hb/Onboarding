@@ -6,15 +6,26 @@
     flex-direction: row;
     gap:5%
 }
-.info-content{
-    width: 50%;
-    height: 100%;
+.info-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
 }
+
 .info-content h4{
     height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.detalle-content .video-container video {
+  width: 100%;
+  height: auto;
 }
 .info-content section{
     height: 40%;
@@ -22,8 +33,15 @@
     text-align: center;
 
 }
+
 .info-content .btn{
     height: 20%;
+}
+.info-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff
 }
 .videos-content{
     width: 50%;
@@ -32,23 +50,27 @@
     padding: 0% 5%;
     
 }
+.info-content h4, .info-content section, .info-content .btn {
+  flex-basis: 20%; 
+  flex-shrink: 1;
+}
   
   .videos-content::-webkit-scrollbar {
     
-    width: 10px; /* Ancho del scrollbar */
+    width: 10px;
   }
   
   .videos-content::-webkit-scrollbar-track {
-    background: transparent; /* Color de fondo del scrollbar */
+    background: transparent;
   }
   
   .videos-content::-webkit-scrollbar-thumb {
-    background: #888; /* Color del thumb (barra de desplazamiento) */
-    border-radius: 5px; /* Radio de borde del thumb */
+    background: #888; 
+    border-radius: 5px; 
   }
   
   .videos-content::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Cambia el color del thumb cuando se pasa el mouse sobre él */
+    background: #555; 
   }
   
 .video-content{
@@ -62,3 +84,13 @@
 
     border: 1px solid  rgba(54, 148, 118);
 }
+.video-container {
+  flex-grow: 1;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+}
+
+

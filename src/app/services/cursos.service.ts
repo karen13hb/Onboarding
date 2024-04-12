@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpParams } from '@angular/common/http';
 import { retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class CursosService {
   private ApiEquipo = "https://6be3274e-4706-4fc1-be55-dfacda2f4cc0.mock.pstmn.io"
   private ApiVerificar ='https://66091da3-df15-4d08-b37c-cb6e296cd304.mock.pstmn.io'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private sanitizer: DomSanitizer) {
     this.ApiURL1 = "https://b08d2354-a57f-4621-a7c6-afe10a13af77.mock.pstmn.io";
     this.ApiURL2 = "https://028f0adf-d997-460d-8215-87ecb089b44d.mock.pstmn.io"
    }
@@ -38,6 +40,18 @@ export class CursosService {
    validarCuestionario(data: any){
   
     return this.http.get<any>(`${this.ApiVerificar}/cursos`,data).pipe(
+			retry(2)
+		);
+  }
+
+  obtenerVideoUrl(idVideo: number): SafeUrl {
+    const videoUrl = `http://localhost:3000/videos/video/${idVideo}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+  }
+
+
+  registrarInteraccionVideo(data: any): Observable<any> {
+    return this.http.post("http://localhost:3000/cursos", data).pipe(
 			retry(2)
 		);
   }

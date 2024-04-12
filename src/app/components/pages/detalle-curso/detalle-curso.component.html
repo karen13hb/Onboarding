@@ -5,15 +5,26 @@
         <section class="description">
             {{descripcion}}
         </section>
-        
-        <div class="btn">
-            <button class="btn-next" (click)="openDialog()">Cuestionario</button>
+        <div class="video-container">
+            <video #videoPlayer controls (seeking)="onSeeking(videoPlayer)" (seeked)="onSeeked(videoPlayer)">
+                <source [src]="videoUrl" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
         </div>
-
+       
+        
     </div>
+    
+    
+    
+    
+    
     <div class="videos-content">
         <div class="video-content" *ngFor="let video of videos" >
             <p>{{ video.nombre }}</p>
+        </div>
+        <div class="btn">
+            <button class="btn-next" (click)="openDialog()">Cuestionario</button>
         </div>
     </div>
     
