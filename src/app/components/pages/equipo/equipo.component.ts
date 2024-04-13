@@ -29,7 +29,7 @@ export class EquipoComponent {
         console.log(this.equipo)
       },
       error: (error) => {
-        console.error('Error al crear la reserva', error);
+        console.error('Error obtener equipo', error);
       }
     });
   }

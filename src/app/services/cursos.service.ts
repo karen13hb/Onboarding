@@ -34,8 +34,7 @@ export class CursosService {
 		);
    }
 
-   validarCuestionario(data: any){
-  
+   validarCuestionario(data: any){ 
     return this.http.get<any>(`${this.ApiURL}/cursos`,data).pipe(
 			retry(2)
 		);
@@ -49,6 +48,12 @@ export class CursosService {
 
   registrarInteraccionVideo(data: any): Observable<any> {
     return this.http.post(`${this.ApiURL}/cursos`, data).pipe(
+			retry(2)
+		);
+  }
+
+  obtenerReunion(idUsuario: number) {
+    return this.http.get(`${this.ApiURL}/reunion/${idUsuario}`).pipe(
 			retry(2)
 		);
   }

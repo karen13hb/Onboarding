@@ -20,9 +20,12 @@
     
     
     <div class="videos-content">
-        <div class="video-content" *ngFor="let video of videos" >
-            <p>{{ video.nombre }}</p>
-        </div>
+        <ng-container *ngFor="let video of videos">
+            <div class="video-content" (click)="obtenerVideo(video.idVideo)" >
+                <p>{{ video.nameVideo }}</p>
+            </div>
+        </ng-container>
+        
         <div class="btn">
             <button class="btn-next" (click)="openDialog()">Cuestionario</button>
         </div>

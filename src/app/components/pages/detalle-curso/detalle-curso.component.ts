@@ -11,9 +11,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./detalle-curso.component.css']
 })
 export class DetalleCursoComponent {
-  idVideo = 8;
+  idVideo=0;
   idCurso = 0;
-  idUsuario = 12;
+  idUsuario = 0;
   public videos: any = []
   public cuestionario: any = []
   public descripcion = "";
@@ -25,19 +25,16 @@ export class DetalleCursoComponent {
   }
 
   ngOnInit(): void {
-    this.obtenerVideoCuestionario();
+    
     this.idCurso = history.state.idCurso;
     this.descripcion = history.state.descripcion;
     this.titulo = history.state.nombre;
-    //this.idUsuario = history.state.idUsuario;
-    this.idUsuario =12;
-
-    this.obtenerVideo();
+    this.idUsuario = history.state.idUsuario; 
+    this.obtenerVideoCuestionario();
 
   }
-  obtenerVideo(): void {
-    
-    this.videoUrl = this.cursosService.obtenerVideoUrl(this.idVideo);
+  obtenerVideo(idVideo:number): void {
+    this.videoUrl = this.cursosService.obtenerVideoUrl(idVideo);
 
   }
 
@@ -50,7 +47,6 @@ export class DetalleCursoComponent {
   }
 
   sendVideoInteraction(currentTime: number) {
-    console.log(this.idUsuario)
     const interactionData = {
       idUsuario: this.idUsuario,
       segundo: Math.floor(currentTime),
@@ -64,15 +60,20 @@ export class DetalleCursoComponent {
   }
 
   public obtenerVideoCuestionario(): void {
+  
     this.cursosService.obtenerVideosPreguntas(this.idCurso).subscribe({
       next: (response) => {
-
+        console.log(response)
         this.videos = response.videos;
         this.cuestionario = response.preguntas
-
+        this.videos[0].idVideo
+        console.log("hola", this.videos)
+        console.log("hola 2",this.cuestionario)
+        console.log(this.videos[0].idVideo)
+        this.obtenerVideo(this.videos[0].idVideo);
       },
       error: (error) => {
-        console.error('Error al crear la reserva', error);
+        console.error('Error obtener videos y cuestionario', error);
       }
     });
   }

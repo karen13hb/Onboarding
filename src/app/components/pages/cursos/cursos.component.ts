@@ -16,10 +16,8 @@ export class CursosComponent {
 
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {  
     this.obtenerCursos();
-    console.log(this.idPersona)
   }
 
   
@@ -29,16 +27,14 @@ export class CursosComponent {
     this.cursosService.obtenerCursos(this.idPersona).subscribe({
       next: (response) => {
         this.cursos =response.cursos;
-        console.log(this.cursos)
       },
       error: (error) => {
-        console.error('Error al crear la reserva', error);
+        console.error('Error obtener cursos', error);
       }
     });
   }
 
   public redirecToCurso(idCurso:number,descripcion:string,nombre:string){
-    
     const Data = { idCurso: idCurso, descripcion:descripcion,nombre:nombre,idUsuario:this.idPersona};
     this.router.navigate(['curso/detalle'], { state: Data });  
 

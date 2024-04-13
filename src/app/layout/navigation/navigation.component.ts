@@ -49,13 +49,17 @@ export class NavigationComponent {
   obtenerNotas():void{
     this.notasService.ObtenerNotas(this.idPersona).subscribe({
       next: (response) => {
-        this.notasInfo = response;
-        if(response){
-          this.contenidoNota = response.text
+        if (response && response.length > 0) {  
+          const nota = response[0]; 
+          this.notasInfo = nota;
+          this.contenidoNota = nota.text;
+        } else {
+          this.notasInfo = null;  
+          this.contenidoNota = '';  
         }
       },
       error: (error) => {
-        console.error('Error al crear la reserva', error);
+        console.error('Error obtener notas', error);
       }
     });
   }
@@ -63,25 +67,28 @@ export class NavigationComponent {
     
   
   guardarNota() {
-
+    debugger
+    let data ={}
     if(this.notasInfo){        
-      const data ={
+      data ={
         "idNotas": this.notasInfo.idNotas,
         "idUsuario":this.notasInfo.idUsuario,
         "text":this.contenidoNota
       }    
+    }else{
+       data ={
+        "idUsuario":this.notasInfo.idUsuario,
+        "text":this.contenidoNota
+      } 
     }
-    const data ={
-      "idUsuario":this.notasInfo.idUsuario,
-      "text":this.contenidoNota
-    } 
+    
     
     this.notasService.guardarNotas(data).subscribe({
       next: (response) => {
         console.log("ruta guardada exitosamente" ,response)
       },
       error: (error) => {
-        console.error('Error al crear la reserva', error);
+        console.error('Error al guardar nota', error);
       }
     });
   }
