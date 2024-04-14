@@ -11,6 +11,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./detalle-curso.component.css']
 })
 export class DetalleCursoComponent {
+  videoKey =0;
   idVideo=0;
   idCurso = 0;
   idUsuario = 0;
@@ -34,7 +35,13 @@ export class DetalleCursoComponent {
 
   }
   obtenerVideo(idVideo:number): void {
-    this.videoUrl = this.cursosService.obtenerVideoUrl(idVideo);
+    console.log(idVideo)
+    
+    this.videoUrl ='';
+    setTimeout(() => {
+      this.videoUrl = this.cursosService.obtenerVideoUrl(idVideo); 
+    }, 0);
+    
 
   }
 
@@ -67,9 +74,6 @@ export class DetalleCursoComponent {
         this.videos = response.videos;
         this.cuestionario = response.preguntas
         this.videos[0].idVideo
-        console.log("hola", this.videos)
-        console.log("hola 2",this.cuestionario)
-        console.log(this.videos[0].idVideo)
         this.obtenerVideo(this.videos[0].idVideo);
       },
       error: (error) => {

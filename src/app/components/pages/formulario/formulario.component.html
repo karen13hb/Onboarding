@@ -1,0 +1,204 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-content">
+    <div class="personal-content d-flex justify-content-center align-items-center"> 
+        <div class="title">
+            <h4>Datos personales</h4>
+        </div> 
+        <div class="inputs-content">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="mb-3">                   
+                            <label for="nombre">Nombre completo : </label>                  
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">                      
+                             <input type="text" id="nombre" class="form-control" formControlName="nombre">                                   
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="mb-3">                   
+                            <label for="cedula">cedula : </label>                  
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">                      
+                             <input type="text" id="cedula" class="form-control" formControlName="cedula">                                   
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="mb-3">                   
+                            <label for="usuario">Usuario : </label>                  
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">                      
+                             <input type="text" id="usuario" class="form-control" formControlName="usuario">                                   
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="mb-3">                   
+                            <label for="contra">Contraseña : </label>                  
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">                      
+                             <input type="password" id="contra" class="form-control" formControlName="contra">                                   
+                        </div>
+                    </div>
+                </div>
+                </div>
+                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div>
+                        <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" width="150" height="150"/>
+                        <div class="mb-3" style="width: 100%;">
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onFileChanged($event)">
+                        </div>
+                    </div>
+                  </div>                
+            </div>            
+        </div>            
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
+    <div class="profesional-content d-flex justify-content-center align-items-center">
+        <div class="title">
+            <h4>Trayectoria Profesional</h4>
+        </div> 
+        <div class="inputs-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Pre-Grado</h6>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="mb-3">                   
+                                <label for="universidad">Universidad : </label>                  
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="mb-3">                      
+                                 <input type="text" id="universidad" class="form-control" formControlName="universidad">                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="mb-3">                   
+                                <label for="carrera">Carrera : </label>                  
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="mb-3">                      
+                                 <input type="text" id="carrera" class="form-control" formControlName="carrera">                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+                <div class="col-md-6">
+                    <h6>Experiencia laboral</h6>
+                    <div formArrayName="experienciaLaboral">
+                        <div *ngFor="let experiencia of getExperienciaLaboralControls(); let i = index">
+                        <div [formGroupName]="i">
+                            <p class="exp-title">Experiencia {{i+1}}</p>
+                          <div class="row">
+                            <div class="col-12 col-md-3">
+                              <div class="mb-3">
+                                <label for="empresa">Empresa:</label>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                              <div class="mb-3">
+                                <input type="text" class="form-control" formControlName="empresa">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-12 col-md-3">
+                              <div class="mb-3">
+                                <label for="rol">Rol:</label>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                              <div class="mb-3">
+                                <input type="text" class="form-control" formControlName="rol">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                        <button class="btn-next" type="button" (click)="agregarExperiencia()">+</button>                    
+                    </div>
+                   
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <hr>
+    </div>
+    <div class="preguntas-content d-flex justify-content-center align-items-center">
+        <div class="title">
+            <h4>Queremos conocerte</h4>
+        </div> 
+        <div class="inputs-content">
+            <div class="row">
+                <div class="col-12 col-md-5 " >
+                    <div class="mb-3"> 
+                    <div class="form-group">
+                        <label for="tiempoLibre">¿Como prefieres pasar tu tiempo libre?</label>
+                        <select id="tiempoLibre" class="form-control"  formControlName="tiempoLibre">
+                        <option value="default"  selected>Seleccione</option>
+                        <option value="now">Opcion 1</option>
+                        <option value="later">Opcion 2</option>    
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 " >
+                    <div class="mb-3"> 
+                    <div class="form-group">
+                        <label for="frecuenciaExperiencias">¿Con qué frecuencia buscas nuevas experiencias?</label>
+                        <select id="frecuenciaExperiencias" class="form-control"  formControlName="frecuenciaExperiencias">
+                        <option value="default"  selected>Seleccione</option>
+                        <option value="now">Opcion 1</option>
+                        <option value="later">Opcion 2</option>    
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5 " >
+                    <div class="mb-3"> 
+                    <div class="form-group">
+                        <label for="nivelSociabilidad">¿Cómo describirías tu nivel de sociabilidad?</label>
+                        <select id="nivelSociabilidad" class="form-control"  formControlName="nivelSociabilidad">
+                        <option value="default"  selected>Seleccione</option>
+                        <option value="now">Opcion 1</option>
+                        <option value="later">Opcion 2</option>    
+                        </select>
+                    </div>
+                    </div>
+                </div>                
+            </div>
+           
+        </div>
+    </div>
+    <div class="btn">
+        <button class="btn-next" type="submit">Enviar</button>
+    </div>
+    
+</form>

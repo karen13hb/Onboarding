@@ -16,6 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ReunionComponent } from './components/pages/reunion/reunion.component';
 import { ModalEncuestaComponent } from './components/Modals/modal-encuesta/modal-encuesta.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormularioComponent } from './components/pages/formulario/formulario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,14 +35,18 @@ import { ModalEncuestaComponent } from './components/Modals/modal-encuesta/modal
     EquipoComponent,
     ModalCuestionarioComponent,
     ReunionComponent,
-    ModalEncuestaComponent
+    ModalEncuestaComponent,
+    HomeComponent,
+    LoginComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
