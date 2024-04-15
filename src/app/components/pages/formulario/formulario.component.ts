@@ -77,7 +77,6 @@ export class FormularioComponent implements OnInit{
         );
       }
     });
-    console.log(respuestasArray)
     return respuestasArray
   }
 
@@ -105,8 +104,6 @@ export class FormularioComponent implements OnInit{
       // };
     }
   
-    
-    console.log(this.imagenBase64)
   }
   fileToBuffer(file: File): Promise<ArrayBuffer> {
     return new Promise((resolve, reject) => {
@@ -158,7 +155,6 @@ export class FormularioComponent implements OnInit{
   guardarUsuario(Data:any){
     this.usuarioService.crearUsuario(Data).subscribe({
       next: (response) => {
-        console.log(response)
         
       },
       error: (error) => {

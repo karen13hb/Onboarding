@@ -26,7 +26,6 @@ export class EquipoComponent {
     this.cursosService.obtenerEquipo(this.idUsuario).subscribe({
       next: (response) => {
         this.equipo =response;
-        console.log(this.equipo)
       },
       error: (error) => {
         console.error('Error obtener equipo', error);

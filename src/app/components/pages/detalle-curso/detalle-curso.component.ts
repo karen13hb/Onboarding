@@ -34,9 +34,7 @@ export class DetalleCursoComponent {
     this.obtenerVideoCuestionario();
 
   }
-  obtenerVideo(idVideo:number): void {
-    console.log(idVideo)
-    
+  obtenerVideo(idVideo:number): void {  
     this.videoUrl ='';
     setTimeout(() => {
       this.videoUrl = this.cursosService.obtenerVideoUrl(idVideo); 
@@ -70,7 +68,6 @@ export class DetalleCursoComponent {
   
     this.cursosService.obtenerVideosPreguntas(this.idCurso).subscribe({
       next: (response) => {
-        console.log(response)
         this.videos = response.videos;
         this.cuestionario = response.preguntas
         this.videos[0].idVideo
@@ -93,7 +90,5 @@ export class DetalleCursoComponent {
     modalRef.componentInstance.preguntas = this.cuestionario;
     modalRef.componentInstance.idUsuario = this.idUsuario;
     modalRef.componentInstance.idCurso = this.idCurso;
-
-    console.log(this.cuestionario)
   }
 }

@@ -47,7 +47,6 @@ export class CursosComponent {
   public habilitarPaso(){
     this.cursosService.finalizarCursos(this.idPersona).subscribe({
       next: (response) => {
-        console.log(response.verificado)
         this.siguiente = !response.verificado
       },
       error: (error) => {

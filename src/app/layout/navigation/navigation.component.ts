@@ -8,7 +8,7 @@ import { NotasService } from 'src/app/services/notas.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  idPersona = 1;
+  idPersona!:any;
   selectedTab: string = 'cursos';
   mostrarNotas: boolean = false;
   preguntar:boolean =false;
@@ -25,6 +25,7 @@ export class NavigationComponent {
   }
 
   ngOnInit(): void {
+    this.idPersona = history.state.idUser; 
     this.obtenerNotas();
     
   }

@@ -67,7 +67,6 @@ export class CursosService {
 
   preguntar(data:any){
     let params = new HttpParams();
-    console.log(data)
     params = params.set('query', data.text);
 
     return this.http.get(`${this.ApiURL}/preguntas/buscar`, { params: params }).pipe(
