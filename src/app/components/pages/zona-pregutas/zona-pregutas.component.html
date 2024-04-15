@@ -1,1 +1,16 @@
-<p>zona-pregutas works!</p>
+<div class="zona-preguntas">
+    <div *ngFor="let pregunta of preguntas" class="pregunta">
+        <div class="pregunta-titulo">{{ pregunta.titulo }}</div>
+        <div class="pregunta-descripcion">{{ pregunta.descripcion }}</div>
+        <div class="respuestas">
+            <div *ngFor="let respuesta of pregunta.respuestas" class="respuesta">
+                {{ respuesta.contenido }}
+            </div>
+        </div>
+    </div>
+    <div class="nueva-pregunta">
+        <input type="text" placeholder="Título de la pregunta" [(ngModel)]="nuevaPregunta.titulo">
+        <textarea placeholder="Descripción" [(ngModel)]="nuevaPregunta.descripcion"></textarea>
+        <button (click)="agregarPregunta()">Añadir Pregunta</button>
+    </div>
+</div>

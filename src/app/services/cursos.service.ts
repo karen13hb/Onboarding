@@ -4,6 +4,7 @@ import { retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { Pregunta } from '../interfaces/preguntasRespuestasFrecuentes';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,12 @@ export class CursosService {
     return this.http.post(`${this.apiprueba}/pregunta/recomendacion`, data).pipe(
 			retry(2)
 		);
+  }
+
+  getPreguntas(): Observable<Pregunta[]> {
+      return this.http.get<Pregunta[]>(`${this.ApiURL}/preguntas`).pipe(
+        retry(2)
+      );;
   }
    
 }
