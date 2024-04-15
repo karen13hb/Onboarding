@@ -14,7 +14,7 @@ label {
   
   label input:checked + span {
     border-radius: 10px;
-    background-color: var(--color-transparent); /* You can replace this with your primary color */
+    background-color: var(--color-transparent);
   }
   
   label input:checked + span:before {

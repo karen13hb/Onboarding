@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient ,HttpHeaders,HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -35,10 +35,8 @@ export class CursosService {
    }
 
    validarCuestionario(data: any){ 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers: headers, body: data };
 
-    return this.http.get<any>(`${this.ApiURL}/cursos`, options).pipe(
+    return this.http.get<any>(`${this.ApiURL}/cursos/verificar`, data).pipe(
       retry(2)
     );
   }

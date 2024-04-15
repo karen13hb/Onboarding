@@ -7,6 +7,8 @@ import { DetalleCursoComponent } from './components/pages/detalle-curso/detalle-
 import { EquipoComponent } from './components/pages/equipo/equipo.component';
 import { ReunionComponent } from './components/pages/reunion/reunion.component';
 import { FormularioComponent } from './components/pages/formulario/formulario.component';
+import { LoginComponent } from './components/login/login.component';
+import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
 
 
 const routes: Routes = [
@@ -17,9 +19,14 @@ const routes: Routes = [
       component:NavigationComponent,
       children:[
         {
-          path:'', component:FormularioComponent
+          path:'', component:LoginComponent
         },
-        
+        {
+          path:'formulario', component:FormularioComponent
+        },
+        {
+          path:'zonapreguntas', component:ZonaPregutasComponent
+        },
         {
           path:'cursos', component:CursosComponent
         },
