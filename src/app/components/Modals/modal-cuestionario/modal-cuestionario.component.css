@@ -13,6 +13,7 @@ label {
   }
   
   label input:checked + span {
+    border-radius: 10px;
     background-color: var(--color-transparent); /* You can replace this with your primary color */
   }
   
@@ -24,11 +25,12 @@ label {
     display: flex;
     align-items: center;
     padding: 0.375em 0.75em 0.375em 0.375em;
-    border-radius: 99em; 
+    border-radius: 10em; 
     transition: 0.25s ease;
   }
   
   label span:hover {
+    border-radius: 10px;
     background-color: #f2f2f2; 
   }
   

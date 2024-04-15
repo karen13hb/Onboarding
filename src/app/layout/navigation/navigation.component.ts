@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CursosService } from 'src/app/services/cursos.service';
 import { NotasService } from 'src/app/services/notas.service';
 
 @Component({
@@ -13,8 +14,13 @@ export class NavigationComponent {
   preguntar:boolean =false;
   contenidoNota: string = '';
   notasInfo: any;
-
-  constructor(private notasService:NotasService){
+  pregunta: string = '';
+  respuestaPregunta :any=[];
+  defaultResponse={
+    respuesta:"No resuelve mi pregunta"
+  };
+  defaultShow = false;
+  constructor(private notasService:NotasService,private cursosService: CursosService,){
     
   }
 
@@ -67,7 +73,6 @@ export class NavigationComponent {
     
   
   guardarNota() {
-    debugger
     let data ={}
     if(this.notasInfo){        
       data ={
@@ -91,5 +96,32 @@ export class NavigationComponent {
         console.error('Error al guardar nota', error);
       }
     });
+  }
+
+  public hacerPregunta(){
+    if (this.pregunta.trim() !== '') {  
+      const data ={
+        "idUsuario":this.idPersona,
+        "text":this.pregunta
+      } 
+      this.cursosService.preguntar(data).subscribe({
+        next: (response) => {
+          this.respuestaPregunta = response
+          this.respuestaPregunta.push(this.defaultResponse);
+          this.defaultShow =true;
+        },
+        error: (error) => {
+          console.error('Error', error);
+        }
+      });
+      this.pregunta = ''; 
+    } else {
+      
+      console.log('La pregunta no puede estar vacía');
+    }
+   
+  }
+  public cerrar(){
+    this.togglePreguntar();
   }
 }

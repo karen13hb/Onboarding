@@ -6,6 +6,6 @@ export interface Pregunta {
   
  export interface Respuesta {
     idRespuesta: number;
-    nombreRespuesta: string;
+    respuesta: string;
   }
   

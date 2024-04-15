@@ -20,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/pages/formulario/formulario.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
 
 
 
@@ -38,7 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModalEncuestaComponent,
     HomeComponent,
     LoginComponent,
-    FormularioComponent
+    FormularioComponent,
+    ZonaPregutasComponent
   ],
   imports: [
     BrowserModule,

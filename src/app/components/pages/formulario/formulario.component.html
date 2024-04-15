@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-12 col-md-3">
                         <div class="mb-3">                   
-                            <label for="nombre">Nombre completo : </label>                  
+                            <label for="nombre">Nombre : </label>                  
                         </div>
                     </div>
                     <div class="col-12 col-md-8">
@@ -153,49 +153,26 @@
             <h4>Queremos conocerte</h4>
         </div> 
         <div class="inputs-content">
-            <div class="row">
-                <div class="col-12 col-md-5 " >
-                    <div class="mb-3"> 
-                    <div class="form-group">
-                        <label for="tiempoLibre">¿Como prefieres pasar tu tiempo libre?</label>
-                        <select id="tiempoLibre" class="form-control"  formControlName="tiempoLibre">
-                        <option value="default"  selected>Seleccione</option>
-                        <option value="now">Opcion 1</option>
-                        <option value="later">Opcion 2</option>    
-                        </select>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-5 " >
-                    <div class="mb-3"> 
-                    <div class="form-group">
-                        <label for="frecuenciaExperiencias">¿Con qué frecuencia buscas nuevas experiencias?</label>
-                        <select id="frecuenciaExperiencias" class="form-control"  formControlName="frecuenciaExperiencias">
-                        <option value="default"  selected>Seleccione</option>
-                        <option value="now">Opcion 1</option>
-                        <option value="later">Opcion 2</option>    
-                        </select>
-                    </div>
+            <div class="row" *ngFor="let pregunta of preguntasPersonales; let i = index">
+                <div class="col-12 col-md-5">
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label [for]="pregunta.idPregunta">{{ pregunta.pregunta }}</label>
+                            <select [id]="pregunta.idPregunta" class="form-control" [formControlName]="pregunta.idPregunta">
+                                <option value="default" selected>Seleccione</option>
+                                <option *ngFor="let respuesta of pregunta.respuestas" [value]="respuesta.idRespuesta">
+                                    {{ respuesta.respuesta }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                
             </div>
-            <div class="row">
-                <div class="col-12 col-md-5 " >
-                    <div class="mb-3"> 
-                    <div class="form-group">
-                        <label for="nivelSociabilidad">¿Cómo describirías tu nivel de sociabilidad?</label>
-                        <select id="nivelSociabilidad" class="form-control"  formControlName="nivelSociabilidad">
-                        <option value="default"  selected>Seleccione</option>
-                        <option value="now">Opcion 1</option>
-                        <option value="later">Opcion 2</option>    
-                        </select>
-                    </div>
-                    </div>
-                </div>                
-            </div>
-           
         </div>
+        
+    </div>
+    <div *ngIf="mensajeError" class="alert alert-danger">
+        {{mensajeError}}
     </div>
     <div class="btn">
         <button class="btn-next" type="submit">Enviar</button>

@@ -7,7 +7,7 @@
         <h3>{{ pregunta.pregunta }}</h3>
         <label *ngFor="let respuesta of pregunta.respuestas">
             <input type="radio" name="{{ pregunta.idPregunta }}" [value]="respuesta.idRespuesta" [(ngModel)]="respuestasSeleccionadas[pregunta.idPregunta]">
-            <span>{{ respuesta.nombreRespuesta }}</span>
+            <span>{{ respuesta.respuesta }}</span>
         </label>
         <p class="validation" *ngIf="!esRespuestaCorrecta(pregunta.idPregunta)">Es incorrecta</p>
       </div>

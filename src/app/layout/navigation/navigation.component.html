@@ -30,9 +30,19 @@
 
 <div class="question-container" *ngIf="preguntar">
     <div class="input-group flex-nowrap mb-3">
-        <input type="text" class="form-control input-q" placeholder="Hazme una pregunta">
+        <input type="text" class="form-control input-q" placeholder="Hazme una pregunta" [(ngModel)]="pregunta">
         <div class="input-group-append">
-          <button class="btn btn-success color-b" type="submit">Preguntar</button>
+          <button class="btn btn-success color-b" type="button" (click)="hacerPregunta()">Preguntar</button>
         </div>
-      </div>
+    </div>
+    <div class="recomendaciones">
+        <ng-container *ngFor="let respuesta of respuestaPregunta">
+          <div class="respuesta" (click)="cerrar()">
+            <p>{{respuesta.respuesta}}</p>
+          </div>
+        </ng-container>
+        <!-- <div  *ngIf="defaultShow" class="respuesta">
+          <p>{{defaultResponse}}</p>
+        </div> -->
+    </div>
 </div>

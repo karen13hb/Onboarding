@@ -93,5 +93,7 @@ export class DetalleCursoComponent {
     modalRef.componentInstance.preguntas = this.cuestionario;
     modalRef.componentInstance.idUsuario = this.idUsuario;
     modalRef.componentInstance.idCurso = this.idCurso;
+
+    console.log(this.cuestionario)
   }
 }
