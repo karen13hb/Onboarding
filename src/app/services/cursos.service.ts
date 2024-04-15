@@ -36,10 +36,15 @@ export class CursosService {
    }
 
    validarCuestionario(data: any){ 
-
-    return this.http.get<any>(`${this.ApiURL}/cursos/verificar`, data).pipe(
+    return this.http.post<any>(`${this.ApiURL}/cursos/verificar`, data).pipe(
       retry(2)
     );
+  }
+
+  finalizarCursos(idUsuario:number){
+    return this.http.get<any>(`${this.ApiURL}/cursos/finalizar/${idUsuario}`).pipe(
+			retry(2)
+		);
   }
 
   obtenerVideoUrl(idVideo: number): SafeUrl {
