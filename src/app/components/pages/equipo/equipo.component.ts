@@ -32,4 +32,7 @@ export class EquipoComponent {
       }
     });
   }
+  siguientePaso(){
+    this.router.navigate(['cursos/usuario/reunion']);
+  }
 }

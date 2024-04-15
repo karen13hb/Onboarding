@@ -23,9 +23,11 @@
     
    
 </div>
-
+<div *ngIf="mensaje" class="alert alert-danger">
+    {{mensaje}}
+</div>
 <div class="btn">
-    <button class="btn-next" (click)="siguientePaso()" [disabled]="false">He finalizado todos mis cursos</button>
+    <button class="btn-next" (click)="habilitarPaso()">He finalizado todos mis cursos</button>
 </div>
 
 

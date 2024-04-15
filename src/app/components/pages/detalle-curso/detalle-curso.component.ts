@@ -39,7 +39,7 @@ export class DetalleCursoComponent {
     setTimeout(() => {
       this.videoUrl = this.cursosService.obtenerVideoUrl(idVideo); 
     }, 0);
-    
+    this.idVideo= idVideo;
 
   }
 

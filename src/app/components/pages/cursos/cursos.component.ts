@@ -11,8 +11,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class CursosComponent {
 
   idPersona!:any;
-  public cursos: any =[]
-  public siguiente = true;
+  public cursos: any =[];
+  mensaje:string | null = null;
   constructor(private cursosService:CursosService,
     private router: Router,
     private usuarioService: UsuarioService){
@@ -26,7 +26,6 @@ export class CursosComponent {
       this.idPersona = this.usuarioService.getId()
     }
     this.obtenerCursos();
-    this.habilitarPaso();
   }
 
   
@@ -51,9 +50,15 @@ export class CursosComponent {
 
   
   public habilitarPaso(){
+    this.mensaje =null;
     this.cursosService.finalizarCursos(this.idPersona).subscribe({
       next: (response) => {
-        this.siguiente = !response.verificado
+        if(response.verificado){
+          this.siguientePaso()
+        }else{
+          this.mensaje ="debes finalizar todos tus cursos";
+        }
+        
       },
       error: (error) => {
         console.error('Error obtener cursos', error);
