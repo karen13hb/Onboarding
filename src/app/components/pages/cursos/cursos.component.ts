@@ -36,7 +36,7 @@ export class CursosComponent {
 
   public redirecToCurso(idCurso:number,descripcion:string,nombre:string){
     const Data = { idCurso: idCurso, descripcion:descripcion,nombre:nombre,idUsuario:this.idPersona};
-    this.router.navigate(['curso/detalle'], { state: Data });  
+    this.router.navigate(['cursos/detalle'], { state: Data });  
 
   }
 

@@ -9,37 +9,48 @@ import { ReunionComponent } from './components/pages/reunion/reunion.component';
 import { FormularioComponent } from './components/pages/formulario/formulario.component';
 import { LoginComponent } from './components/login/login.component';
 import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
+import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 
 
 const routes: Routes = [
-
-  
+    
     {
+      
       path:'', 
-      component:NavigationComponent,
+      component:SkeletonComponent,
       children:[
         {
           path:'', component:LoginComponent
-        },
+        }, 
         {
-          path:'formulario', component:FormularioComponent
-        },
-        {
-          path:'zonapreguntas', component:ZonaPregutasComponent
-        },
-        {
-          path:'cursos', component:CursosComponent
-        },
-        {
-          path:'curso/detalle', component:DetalleCursoComponent
-        },
-        {
-          path:'usuario/equipo', component:EquipoComponent
-        },
-        {
-          path:'usuario/reunion', component:ReunionComponent
-        },
+          path:'cursos', component:NavigationComponent,
+          children:[
+            {
+              path:'', component:CursosComponent
+            },
+            {
+              path:'formulario', component:FormularioComponent
+            },
+            {
+              path:'zonapreguntas', component:ZonaPregutasComponent
+            },
+            {
+              path:'all', component:CursosComponent
+            },
+            {
+              path:'detalle', component:DetalleCursoComponent
+            },
+            {
+              path:'usuario/equipo', component:EquipoComponent
+            },
+            {
+              path:'usuario/reunion', component:ReunionComponent
+            },
 
+          ]
+
+        }, 
+       
       ]
     }
   
