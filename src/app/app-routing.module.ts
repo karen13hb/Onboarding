@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { authGuard } from './guards/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,14 @@ const routes: Routes = [
       component:SkeletonComponent,
       children:[
         {
-          path:'', component:LoginComponent
+          path:'', component:HomeComponent
         }, 
+        {
+          path:'login', component:LoginComponent
+        }, 
+        {
+          path:'registro', component:FormularioComponent
+        },
         {
           path:'cursos', component:NavigationComponent,
           canActivate: [authGuard],
@@ -29,9 +36,7 @@ const routes: Routes = [
             {
               path:'', component:CursosComponent
             },
-            {
-              path:'formulario', component:FormularioComponent
-            },
+           
             {
               path:'zonapreguntas', component:ZonaPregutasComponent
             },

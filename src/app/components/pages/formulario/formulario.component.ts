@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray,AbstractControl, Validators  } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import * as buffer from 'buffer';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class FormularioComponent implements OnInit{
   preguntasPersonales: any =[];
   mensajeError: string | null = null;
   imagenBase64: string  = '';
-  constructor(private fb: FormBuilder,private usuarioService:UsuarioService) { 
+  constructor(private fb: FormBuilder,private usuarioService:UsuarioService,private router: Router) { 
 
     this.formulario = this.fb.group({
       nombre: [null, Validators.required],
@@ -155,12 +156,14 @@ export class FormularioComponent implements OnInit{
   guardarUsuario(Data:any){
     this.usuarioService.crearUsuario(Data).subscribe({
       next: (response) => {
+
         
       },
       error: (error) => {
         console.error('Error ', error);
       }
     });
+    this.router.navigate(['login']);
   }
-  
+   
 }
