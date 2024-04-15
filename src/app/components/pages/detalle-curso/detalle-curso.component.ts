@@ -48,6 +48,7 @@ export class DetalleCursoComponent {
   }
 
   onSeeked(video: HTMLVideoElement) {
+    console.log(video.currentTime)
     this.sendVideoInteraction(video.currentTime);
   }
 
@@ -72,6 +73,7 @@ export class DetalleCursoComponent {
         this.cuestionario = response.preguntas
         this.videos[0].idVideo
         this.obtenerVideo(this.videos[0].idVideo);
+        this.idVideo = this.videos[0].idVideo
       },
       error: (error) => {
         console.error('Error obtener videos y cuestionario', error);
