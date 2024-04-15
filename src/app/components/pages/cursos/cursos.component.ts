@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-cursos',
@@ -12,13 +13,18 @@ export class CursosComponent {
   idPersona!:any;
   public cursos: any =[]
   public siguiente = true;
-  constructor(private cursosService:CursosService,private router: Router){
+  constructor(private cursosService:CursosService,
+    private router: Router,
+    private usuarioService: UsuarioService){
 
   }
 
   ngOnInit(): void {  
    
     this.idPersona = history.state.idUser; 
+    if(!this.idPersona){
+      this.idPersona = this.usuarioService.getId()
+    }
     this.obtenerCursos();
     this.habilitarPaso();
   }

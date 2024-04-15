@@ -9,8 +9,16 @@ import { environment } from 'src/environments/environment';
 export class UsuarioService {
 
   private ApiURL;
+  idUsuario:any;
   constructor(private http: HttpClient) {
     this.ApiURL = environment.apiUrl;
+   }
+
+   setId(id: any){
+    this.idUsuario = id;
+   }
+   getId():any{
+    return this.idUsuario;
    }
 
    crearUsuario(data: any ){
