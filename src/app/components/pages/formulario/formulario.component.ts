@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl,AbstractControl, Validators  } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray,AbstractControl, Validators  } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import * as buffer from 'buffer';
 

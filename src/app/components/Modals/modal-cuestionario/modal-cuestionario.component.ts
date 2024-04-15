@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Pregunta,Respuesta } from '../../../interfaces/preguntaRespuesta';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Pregunta } from '../../../interfaces/preguntaRespuesta';
 import { CursosService } from 'src/app/services/cursos.service';
 
 
@@ -16,6 +16,7 @@ export class ModalCuestionarioComponent {
   public idUsuario=0;
   public idCurso=0;
   public respuesta:any =[];
+  public disabled =false;
 
   respuestasSeleccionadas: { [idPregunta: number]: number } = {};
 
@@ -36,17 +37,17 @@ export class ModalCuestionarioComponent {
         }))
       })).filter(pregunta => pregunta.respuestas.length > 0)
     };
-    console.log(datosEnviar)
     this.cursosService.validarCuestionario(datosEnviar).subscribe({
       next: (response) => {
-        console.log('Respuestas enviadas exitosamente', response);
         this.respuesta =response;
+        this.disabled=true;
       },
       error: (error) => {
         console.error('Error al enviar las respuestas', error);
       }
     });
 
+   
   }
 
   esRespuestaCorrecta(idPregunta: number): boolean {

@@ -39,9 +39,8 @@ export class LoginComponent {
     }
     this.authService.login(credenciales).subscribe({
       next: (response) => {
-        console.log(response.access_token)
         this.is_LoggedIn = true;
-        this.authService.setItem('token', response);
+        this.authService.setItem('token', response.access_token);
         this.router.navigate(['cursos']);
       },
       error: (error) => {

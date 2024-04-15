@@ -40,9 +40,25 @@ export class CursosComponent {
 
   }
 
+  
+  public habilitarPaso(){
+    this.cursosService.finalizarCursos(this.idPersona).subscribe({
+      next: (response) => {
+        this.siguiente = response.verificado
+      },
+      error: (error) => {
+        console.error('Error obtener cursos', error);
+      }
+    });
+   
+  }
+  
+
+
   public siguientePaso(){
     const Data = { idUsuario: this.idPersona };
-    this.router.navigate(['usuario/equipo'], { state: Data });
+    this.router.navigate(['cursos/usuario/equipo'], { state: Data });
+   
   }
-
+  
 }

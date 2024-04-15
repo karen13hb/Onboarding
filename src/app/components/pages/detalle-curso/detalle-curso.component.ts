@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalCuestionarioComponent } from '../../Modals/modal-cuestionario/modal-cuestionario.component';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import {  SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detalle-curso',
