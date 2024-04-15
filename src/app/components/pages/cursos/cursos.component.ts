@@ -9,15 +9,18 @@ import { CursosService } from 'src/app/services/cursos.service';
 })
 export class CursosComponent {
 
-  idPersona =1;
+  idPersona!:any;
   public cursos: any =[]
-  public siguiente = false; // si el servicio retorna true habilita el boton
+  public siguiente = true;
   constructor(private cursosService:CursosService,private router: Router){
 
   }
 
   ngOnInit(): void {  
+   
+    this.idPersona = history.state.idUser; 
     this.obtenerCursos();
+    this.habilitarPaso();
   }
 
   
@@ -44,7 +47,8 @@ export class CursosComponent {
   public habilitarPaso(){
     this.cursosService.finalizarCursos(this.idPersona).subscribe({
       next: (response) => {
-        this.siguiente = response.verificado
+        console.log(response.verificado)
+        this.siguiente = !response.verificado
       },
       error: (error) => {
         console.error('Error obtener cursos', error);

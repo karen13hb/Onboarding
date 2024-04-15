@@ -9,6 +9,7 @@ import { FormularioComponent } from './components/pages/formulario/formulario.co
 import { LoginComponent } from './components/login/login.component';
 import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
         }, 
         {
           path:'cursos', component:NavigationComponent,
+          canActivate: [authGuard],
           children:[
             {
               path:'', component:CursosComponent
