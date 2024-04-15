@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {jwtDecode} from 'jwt-decode';
+import { UsuarioService } from './usuario.service';
 
 
 @Injectable({
@@ -10,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private ApiURL;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,private usuarioService: UsuarioService) { 
     this.ApiURL = environment.apiUrl;
   }
 
@@ -32,5 +34,19 @@ export class AuthService {
 
    setItem(key: string, value: string): void {
     localStorage.setItem(key, value);
+  }
+
+  
+  decodeToken(): string | null {
+    const token: string | null = this.getToken();
+    
+    if (token) {
+      const tokenPayload = jwtDecode(token);
+      this.usuarioService.setId(tokenPayload.sub);
+      return tokenPayload.sub || null;  
+      
+    }
+    
+    return null;
   }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import {jwtDecode} from 'jwt-decode';
+
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private usuarioService: UsuarioService) { }
+    ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -46,10 +46,11 @@ export class LoginComponent {
       next: (response) => {
         this.is_LoggedIn = true;
         this.authService.setItem('token', response.access_token);
-        const tokenPayload = jwtDecode(response.access_token);
-        this.router.navigate(['cursos'],{ state: {idUser: tokenPayload.sub}});
+       
+        this.router.navigate(['cursos'],);
+        this.authService.decodeToken();
 
-        this.usuarioService.setId(tokenPayload.sub);
+        
         
       },
       error: (error) => {

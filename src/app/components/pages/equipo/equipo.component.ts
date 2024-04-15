@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
@@ -9,15 +10,15 @@ import { CursosService } from 'src/app/services/cursos.service';
 })
 export class EquipoComponent {
 
-  private idUsuario :number=0;
+  private idUsuario!:any;
   public equipo: any =[]
-  constructor(private cursosService:CursosService,private router: Router){
+  constructor(private cursosService:CursosService,private router: Router,private authService: AuthService,){
 
   }
 
   
   ngOnInit(): void {
-    this.idUsuario =history.state.idUsuario
+    this.idUsuario = this.authService.decodeToken()
     this.obtenerEquipo();
     
   }

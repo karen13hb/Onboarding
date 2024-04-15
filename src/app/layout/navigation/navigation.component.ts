@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { NotasService } from 'src/app/services/notas.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -23,15 +24,12 @@ export class NavigationComponent {
   defaultShow = false;
   constructor(private notasService:NotasService,
     private cursosService: CursosService,
-    private usuarioService: UsuarioService){
+    private usuarioService: UsuarioService,private authService: AuthService,){
     
   }
 
   ngOnInit(): void {
-    this.idPersona = history.state.idUser; 
-    if(!this.idPersona){
-      this.idPersona = this.usuarioService.getId()
-    }
+   this.idPersona = this.authService.decodeToken()
     this.obtenerNotas();
     
   }

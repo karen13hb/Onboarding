@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -15,17 +16,15 @@ export class CursosComponent {
   mensaje:string | null = null;
   constructor(private cursosService:CursosService,
     private router: Router,
-    private usuarioService: UsuarioService){
+    private usuarioService: UsuarioService,private authService: AuthService,){
 
   }
 
   ngOnInit(): void {  
    
-    this.idPersona = history.state.idUser; 
-    if(!this.idPersona){
-      this.idPersona = this.usuarioService.getId()
-    }
+    this.idPersona = this.authService.decodeToken()
     this.obtenerCursos();
+    console.log(this.idPersona)
   }
 
   
@@ -70,8 +69,7 @@ export class CursosComponent {
 
 
   public siguientePaso(){
-    const Data = { idUsuario: this.idPersona };
-    this.router.navigate(['cursos/usuario/equipo'], { state: Data });
+    this.router.navigate(['cursos/usuario/equipo'],);
    
   }
   
