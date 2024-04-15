@@ -21,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/pages/formulario/formulario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pregutas.component';
+import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 
 
 
@@ -40,7 +41,8 @@ import { ZonaPregutasComponent } from './components/pages/zona-pregutas/zona-pre
     HomeComponent,
     LoginComponent,
     FormularioComponent,
-    ZonaPregutasComponent
+    ZonaPregutasComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,
